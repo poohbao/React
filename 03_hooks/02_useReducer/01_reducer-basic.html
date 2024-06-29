@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const {useReducer} = React;
+
+        function reducer(state, action) {
+            console.log('디스패치 눌렀을때 내가 불러지니?')
+            console.log('state', state);
+            console.log('action', action);
+
+            switch(action.type) {
+                case "DECREMENT" : 
+                    return {value: state.value - 1};
+                case "INCREMENT" :
+                    return {value: state.value + 1};
+                default :
+                    return state;        
+            }
+        }
+
+        function Counter() {
+            
+            const [state, dispatch] = useReducer(reducer, {value: 0});
+
+            return (
+                <>
+                    <h1>counter : {state.value}</h1>
+                    <button onClick={() => dispatch({type: 'DECREMENT'})}>- 1</button>
+                    <button onClick={() => dispatch({type: 'INCREMENT'})}>+ 1</button>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter/>);
+    </script>
+</body>
+</html>
