@@ -1,0 +1,7 @@
+Redux 란? 상태(state) 를 관리하기 위한 라이브러리 
+
+Store 라는 저장고에 우리가 관리해야 할 
+State 를 보관하고
+
+필요 시에 dispatch 를 통해서 수행 해야 할 action을 담아 reducer 함수에 전달한다. 
+ 
